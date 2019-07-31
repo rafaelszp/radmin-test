@@ -65,7 +65,7 @@ const messages = {
   en: {...englishMessages,...domainMessages.en},
 }
 const i18nProvider = () => {
-  console.log(messages[browserLocale])
+  
   return messages[browserLocale]
 };
 

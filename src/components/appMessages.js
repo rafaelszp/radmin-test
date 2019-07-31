@@ -21,7 +21,7 @@ export const en = {
         },
         message: {
             nuts: '(✿◠‿◠) Yay! A nuts message from easy-peasy!!!',
-            error: 'ಠ_ಠ Look! A nuts message fromeasy-peasy!'
+            error: 'ಠ_ಠ Look! A nuts message from easy-peasy!'
         }
     }
 }
