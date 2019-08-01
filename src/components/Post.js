@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, Fragment } from 'react'
 import {
     SimpleForm,
     Edit,
@@ -15,7 +15,21 @@ import {
     Filter,
     SimpleList,
     Responsive,
+    translate,
 } from 'react-admin'
+
+import {
+    required,
+    minLength,
+    maxLength,
+    minValue,
+    maxValue,
+    number,
+    regex,
+    email,
+    choices
+} from 'react-admin'
+
 
 
 import moment from 'moment'
@@ -42,17 +56,42 @@ export const PostEdit = props => (
 );
 
 
-export const PostCreate = props => (
-    <Create {...props}>
-        <SimpleForm>
-            <ReferenceInput label="Usuário" source="userId" reference="users">
-                <SelectInput optionText="name" />
-            </ReferenceInput>
-            <TextInput source="title" />
-            <LongTextInput source="body" />
-        </SimpleForm>
-    </Create>
-);
+
+let PostCreate = (props) => {
+
+    const {translate } = props;
+    const validateTitle = [required(), minLength(3), maxLength(15)];
+    const validateBody = [required(), minLength(30), maxLength(100)];
+    const validateUser = [
+            number(translate('ra.validation.selectFieldError',{name: translate('ra.auth.username')})),
+            required(),
+            minValue(1,translate('ra.validation.selectFieldError',{name: translate('ra.auth.username')}))
+        ]
+
+    const initialPost = {
+        title: '',
+        body: '',
+        userId: 0
+    }
+
+    return (
+        <Fragment>
+            <Create {...props}>
+                <SimpleForm  defaultValue={initialPost}>
+                    <ReferenceInput label="Usuário" source="userId" reference="users" validate={validateUser}>
+                        <SelectInput optionText="name" />
+                    </ReferenceInput>
+                    <TextInput source="title" validate={validateTitle} />
+                    <LongTextInput source="body" validate={validateBody} />
+                </SimpleForm>
+            </Create>
+        </Fragment>
+
+    );
+}
+PostCreate = translate(PostCreate)
+export {PostCreate}
+
 
 export const PostList = props => (
     <List filters={<PostFilter />} title="Postagens"  {...props}>
@@ -61,7 +100,7 @@ export const PostList = props => (
                 <SimpleList
                     primaryText={record => record.title}
                     secondaryText={record => `${record.views} views`}
-                    tertiaryText={record => moment().format('DD/MM/YYYY',record.published_at)}
+                    tertiaryText={record => moment().format('DD/MM/YYYY', record.published_at)}
                 />
             }
             medium={

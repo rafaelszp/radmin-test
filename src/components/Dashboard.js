@@ -69,22 +69,27 @@ const Dashboard = ({classes,translate}) => {
   return (
     <Card>
       <Title title="Welcome to the administration" />
-      <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-      <Button variant="contained"
-        color="secondary"
-        aria-label="Show message"
-        onClick={() => dispatch({ ...infoDispatch })}>
-        <InfoIcon />
-        {translate('app.label.nutsInfoMessage')}
-      </Button>
-      <Button 
-        variant="contained" 
-        aria-label="Show message"
-        className={classes.errorButton}
-        onClick={() => dispatch({ ...errorDispatch })}>
-        <InfoIcon />
-        {translate('app.label.nutsErrorMessage')}
-      </Button>
+      <CardContent>
+        
+        <p>🍿🍿easy-peasy buttons ✌️</p>
+
+        <Button variant="contained"
+          color="secondary"
+          aria-label="Show message"
+          onClick={() => dispatch({ ...infoDispatch })}>
+          <InfoIcon />
+          {translate('app.label.nutsInfoMessage')}
+        </Button>
+        &nbsp;
+        <Button 
+          variant="contained" 
+          aria-label="Show message"
+          className={classes.errorButton}
+          onClick={() => dispatch({ ...errorDispatch })}>
+          <InfoIcon />
+          {translate('app.label.nutsErrorMessage')}
+        </Button>
+      </CardContent>
     </Card>
   )
 };
