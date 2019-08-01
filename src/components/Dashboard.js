@@ -68,10 +68,10 @@ const Dashboard = ({classes,translate}) => {
 
   return (
     <Card>
-      <Title title="Welcome to the administration" />
+      <Title title="ra.page.dashboard" />
       <CardContent>
         
-        <p>🍿🍿easy-peasy buttons ✌️</p>
+        <p>🍿🍿{translate('app.page.welcome')} ✌️</p>
 
         <Button variant="contained"
           color="secondary"

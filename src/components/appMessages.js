@@ -3,11 +3,16 @@ export const pt = {
         label: {
             search: 'Buscar',
             nutsInfoMessage: 'Enviar mensagem maluca de Info',
-            nutsErrorMessage: 'Enviar mensagem maluca de Erro'
+            nutsErrorMessage: 'Enviar mensagem maluca de Erro',
+            post: 'Postagens',
+            user: 'Usuários',
         },
         message: {
             nuts: '(✿◠‿◠) Olha! Uma mensagem maluca proveniente do easy-peasy!!!',
             error: 'ಠ_ಠ Olha! Uma mensagem de erro proveniente do easy-peasy!',
+        },
+        page:{
+            welcome:'Os botões abaixo utilizam o `dispatch` do easy-peasy'
         }
     },
     ra: {
@@ -28,6 +33,9 @@ export const pt = {
         },
         auth: {
             username: 'Usuário'
+        },
+        page: {
+            dashboard: 'Painel de Controle',
         }
     }
 }
@@ -37,11 +45,16 @@ export const en = {
         label: {
             search: 'Search',
             nutsInfoMessage: 'Send a nuts info message',
-            nutsErrorMessage: 'Send a nuts error message'
+            nutsErrorMessage: 'Send a nuts error message',
+            post: 'Posts',
+            user: 'Users',
         },
         message: {
             nuts: '(✿◠‿◠) Yay! A nuts message from easy-peasy!!!',
             error: 'ಠ_ಠ Look! A nuts message from easy-peasy!'
+        },
+        page:{
+            welcome:'The following buttons use easy-peasy `dispatch`'
         }
     },
     ra: {

@@ -55,18 +55,15 @@ export const PostEdit = props => (
     </Edit>
 );
 
+export const PostCreate = translate(({translate,...props}) => {
 
-
-let PostCreate = (props) => {
-
-    const {translate } = props;
     const validateTitle = [required(), minLength(3), maxLength(15)];
     const validateBody = [required(), minLength(30), maxLength(100)];
     const validateUser = [
-            number(translate('ra.validation.selectFieldError',{name: translate('ra.auth.username')})),
-            required(),
-            minValue(1,translate('ra.validation.selectFieldError',{name: translate('ra.auth.username')}))
-        ]
+        number(translate('ra.validation.selectFieldError', { name: translate('ra.auth.username') })),
+        required(),
+        minValue(1, translate('ra.validation.selectFieldError', { name: translate('ra.auth.username') }))
+    ]
 
     const initialPost = {
         title: '',
@@ -77,7 +74,7 @@ let PostCreate = (props) => {
     return (
         <Fragment>
             <Create {...props}>
-                <SimpleForm  defaultValue={initialPost}>
+                <SimpleForm defaultValue={initialPost}>
                     <ReferenceInput label="Usuário" source="userId" reference="users" validate={validateUser}>
                         <SelectInput optionText="name" />
                     </ReferenceInput>
@@ -88,35 +85,34 @@ let PostCreate = (props) => {
         </Fragment>
 
     );
-}
-PostCreate = translate(PostCreate)
-export {PostCreate}
+})
 
-
-export const PostList = props => (
-    <List filters={<PostFilter />} title="Postagens"  {...props}>
-        <Responsive
-            small={
-                <SimpleList
-                    primaryText={record => record.title}
-                    secondaryText={record => `${record.views} views`}
-                    tertiaryText={record => moment().format('DD/MM/YYYY', record.published_at)}
-                />
-            }
-            medium={
-                <Datagrid rowClick="edit">
-                    <ReferenceField source="userId" reference="users">
+export const PostList = translate(({translate,...props}) => {
+    return (
+        <List filters={<PostFilter />} title={translate('app.label.post')}  {...props}>
+            <Responsive
+                small={
+                    <SimpleList
+                        primaryText={record => record.title}
+                        secondaryText={record => `${record.views} views`}
+                        tertiaryText={record => moment().format('DD/MM/YYYY', record.published_at)}
+                    />
+                }
+                medium={
+                    <Datagrid rowClick="edit">
+                        <ReferenceField source="userId" reference="users">
+                            <TextField source="id" />
+                        </ReferenceField>
                         <TextField source="id" />
-                    </ReferenceField>
-                    <TextField source="id" />
-                    <TextField source="title" />
-                    <TextField source="body" />
-                </Datagrid>
+                        <TextField source="title" />
+                        <TextField source="body" />
+                    </Datagrid>
 
-            }
-        />
-    </List>
-);
+                }
+            />
+        </List>
+    )
+});
 
 const PostFilter = (props) => (
     <Filter {...props}>
@@ -126,4 +122,3 @@ const PostFilter = (props) => (
         </ReferenceInput>
     </Filter>
 );
-

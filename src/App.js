@@ -1,5 +1,5 @@
 import React from 'react';
-import { Admin, Resource, resolveBrowserLocale } from 'react-admin';
+import { Admin, Resource, resolveBrowserLocale,translate } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
 import PostIcon from '@material-ui/icons/Book';
@@ -80,7 +80,7 @@ const store=createAdminStore({
 });
 
 
-const App = () => (
+const App = ({translate}) => (
   <Provider store={store}>
     <StoreProvider store={store}>
       <Admin
@@ -91,11 +91,11 @@ const App = () => (
         history={history}
         locale={browserLocale}
         i18nProvider={i18nProvider}>
-        <Resource name="users" options={{ label: "Usuários" }} list={UserList} icon={UserIcon} />
-        <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
+        <Resource name="users" options={{label:'app.label.user'}} list={UserList} icon={UserIcon} />
+        <Resource name="posts" options={{label:'app.label.post'}} list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
       </Admin>
     </StoreProvider>
   </Provider >
 )
 
-export default App;
+export default translate(App);
