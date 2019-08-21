@@ -21,4 +21,4 @@ See: [App.js](./src/App.js)
 
 ## Live Preview
 
-You can live preview this project following this link: [](https://codesandbox.io/s/radmin-test-v0gef)
+You can live preview this project following this link: [https://codesandbox.io/s/radmin-test-v0gef](https://codesandbox.io/s/radmin-test-v0gef)
